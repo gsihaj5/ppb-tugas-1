@@ -1,6 +1,7 @@
 package com.example.tugas_1;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,16 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                Integer panjang = Integer.parseInt(binding.panjangInput.getText().toString());
+                Integer lebar = Integer.parseInt(binding.lebarInput.getText().toString());
+
+                int luas = panjang * lebar;
+
+                binding.hasilLuas.setText("Luas: " + Integer.toString(luas));
             }
         });
     }
